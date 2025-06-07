@@ -8,10 +8,17 @@ async function iniciarRodada() {
   const tamanho = parseInt(document.getElementById('tamanho').value)
   if (!tamanho || tamanho < 1) return
 
+  // Carrega o arquivo de palavras via fetch(text)
   const res = await fetch('words_alpha.txt')
-  const todas = await res.json()
+  const text = await res.text()
+  const todas = text.split('\n')
+    .map(l => l.trim().toLowerCase())
+    .filter(l => l.length > 0 && /^[a-z]+$/.test(l))
+
+  // Filtra pelas palavras do tamanho correto
   palavras = todas.filter(p => p.length === tamanho)
 
+  // Inicializa variáveis de jogo
   mascara = Array(tamanho).fill('_')
   letrasErradas = new Set()
   letrasErradasPos = {}
