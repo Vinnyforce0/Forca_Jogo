@@ -46,14 +46,24 @@ function processarEntrada() {
     return
   }
 
-  if (entrada.startsWith('s ')) {
-    const [_, posStr, letra] = entrada.split(' ')
+  if (entrada.toLowerCase().startsWith('s ')) {
+  const partes = entrada.split(' ')
+  if (partes.length === 3) {
+    const posStr = partes[1]
+    const letra = partes[2].toLowerCase()
+
     const pos = parseInt(posStr) - 1
-    if (pos >= 0 && pos < mascara.length) {
+    if (pos >= 0 && pos < mascara.length && /^[a-z]$/.test(letra)) {
       mascara[pos] = letra
       possibilidadesPorPosicao[pos] = new Set([letra])
+    } else {
+      alert('Posição inválida ou letra inválida! A letra deve ser uma única letra de a a z.')
     }
-  } else if (/^[a-z]$/.test(entrada)) {
+  } else {
+    alert('Formato inválido! Use: s [posição] [letra], por exemplo: s 4 a')
+  }
+}
+ else if (/^[a-z]$/.test(entrada)) {
     const letra = entrada
     if (mascara.includes(letra)) {
       for (let i = 0; i < mascara.length; i++) {
