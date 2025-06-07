@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assistente do Jogo da Forca</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🕹️ Assistente do Jogo da Forca</h1>
+
+    <div class="entrada">
+      <label for="tamanho">Quantidade de letras:</label>
+      <input type="number" id="tamanho" min="1">
+      <button onclick="iniciarRodada()">Começar</button>
+    </div>
+
+    <div id="jogo" style="display:none">
+      <h2>Palavra: <span id="mascara"></span></h2>
+      <p>Letras erradas: <span id="letrasErradas"></span></p>
+
+      <div class="entrada">
+        <input type="text" id="entrada" maxlength="20" placeholder="Digite comando/letra">
+        <button onclick="processarEntrada()">Enviar</button>
+      </div>
+
+      <div id="possibilidades"></div>
+      <div id="sugestoes"></div>
+    </div>
+  </div>
+
+  <script src="/static/forca.js"></script>
+</body>
+</html>
