@@ -8,7 +8,7 @@ async function iniciarRodada() {
   const tamanho = parseInt(document.getElementById('tamanho').value)
   if (!tamanho || tamanho < 1) return
 
-  const res = await fetch('/palavras')
+  const res = await fetch('words_alpha.txt')
   const todas = await res.json()
   palavras = todas.filter(p => p.length === tamanho)
 
