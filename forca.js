@@ -139,4 +139,12 @@ function sugerirLetras() {
   const html = `<strong>🔠 Letras sugeridas:</strong><ul>` +
                sugestoes.map(([l, c]) => `<li>${l.toUpperCase()} (${c})</li>`).join('') + '</ul>'
   document.getElementById('sugestoes').innerHTML = html
+
+  document.getElementById('entrada').addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault()
+    processarEntrada()
+  }
+})
+
 }
