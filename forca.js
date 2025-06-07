@@ -49,7 +49,7 @@ function processarEntrada() {
   if (entrada.startsWith('s ')) {
     const [_, posStr, letra] = entrada.split(' ')
     const pos = parseInt(posStr) - 1
-    if (pos >= 0 && pos < mascara.length) {
+    if (pos >= 0 && pos < mascara.length && letra.lenght == 1) {
       mascara[pos] = letra
       possibilidadesPorPosicao[pos] = new Set([letra])
     }
